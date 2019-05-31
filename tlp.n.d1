@@ -1,0 +1,57 @@
+scan=u
+INPUT ff 2.0 5.0 8.0 11.0
+INPUT pstim=p rstim=r nnts=1 PLtshift=7.0
+nts=1 ts=2400.0 ff=5.0 alphap=0.6
+LT: ntstim=4 tstim=6.0 11.0 56.0 96.0 
+                Ix=0.0 0.8  1.5  0.0
+CELLULAR
+admodel=4 sigmaa=0.001
+LT: gL=0.05 VL=-60.0 VK=-90.0 Vthr=-50.0 taut=1.0 fgb=0.2 fst=20.0 
+    thetaa=1.0 sadapt=0.5 tau_act_del=10.0
+    tauact=10.0 taudeact=100.0 rauact=20.0 raudeact=10.0
+PT: gL=0.05 VL=-60.0 VK=-90.0 Vthr=-50.0 taut=1.0 fgb=0.2 fst=20.0
+    thetaa=0.5 sadapt=1.0 tau_act_del=20.0
+    tauact=3.0 taudeact=100.0 rauact=20.0 raudeact=30.0
+R: taut=1.0
+KINETICS
+AMPA: tau2=2.0
+NMDA: tau2=50.0
+GABAA: tau2=10.0 
+GABAB: tau1=40.0 tau2=150.0 power=2.0
+SYNAPTIC STRENGTHS AND DELAYS
+LT: theta=0.0 (g,td) lep=0.0 10.0 ra=-0.5 3.0 rb=-2.0 35.0
+LE: theta=0.0 (g,td) ltp=1.2 0.0 lia=-0.4 0.0
+LI: theta=0.0 (g,td) ltp=0.2 0.0 lep=0.1 0.0 
+PT: theta=0.0 (g,td) pep=0.0 0.0 ra=-0.16 3.0 rb=-3.5 35.0
+PE: theta=0.0 (g,td) ptp=1.2 0.0 pia=-0.4 0.0
+PI: theta=0.0 (g,td) ptp=0.2 0.0 pep=0.1 0.0 
+R:  theta=0.0 (g,td) ltp=1.2 0.0 lep=0.0 0.0 ptp=1.0 0.0
+GENERAL
+deltat=0.02 nt=120000
+twrite=20 tmcol=120000
+method=e smforce=p
+nwritev=10 nwritevar=1 3 4 7 9 10 14 16 2 8 nwritep=3 nwritepar=1 4 7
+
+
+      1    2    3    4    5    6    7    8    9    10   11   12  
+var: iltv ilta ilti iltp ilep ilia iptv ipta ipti iptp ipep ipia 
+     13   14   15   16
+     iri  ira  jrb  irb
+      1   2   3   4   5   6  7
+pop: MLT MLE MLI MPT MPE MPI MR
+
+
+scan      : n - no, e - equal spacing, u - unequal spacing, t - two parameters,
+            c - contour lines.
+pstim     : i - independent POm stimulus, p - proportional to VPM stimulus.
+rstim     : r - read stimulus, c - calculate stimulus.
+method    : R - Runge-Kutta 4, e - Euler.
+smforce   : p - always print (sm=0), n - always no print (sm=1), 
+            l - leave as is.
+INPUT ff parmin=2.0 parmax=11.0 npar=3   (scan=e)
+PT: ntstim=3 tstim=5.0 50.0 90.0
+                Ix=0.5 0.9   0.0
+
+scan=e
+INPUT ff parmin=1.0 parmax=11.0 npar=20
+INPUT ff 2.0 5.0 8.0 11.0

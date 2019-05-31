@@ -1,0 +1,6 @@
+ncol=13
+colar=12 2 3 4 13 5 6 7 14 8 9 10 11
+ult=4 upt=7 ura=8 urb=9 alt=10 apt=11
+t_inter=200.0 t_off_ra=3.0 t_off_rb=35.0
+nskip=1 average_cycle=2
+t_integrate=0.09
